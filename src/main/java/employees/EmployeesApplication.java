@@ -1,5 +1,6 @@
 package employees;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.modelmapper.ModelMapper;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -21,5 +22,10 @@ public class EmployeesApplication {
 	public ModelMapper getModelMapper()
 	{
 		return new ModelMapper();
+	}
+	@Bean
+	public ObjectMapper objectMapper()
+	{
+		return new ObjectMapper().findAndRegisterModules();
 	}
 }
