@@ -39,4 +39,12 @@ Accept: application/xml
 GET http://localhost:8080/api/employees/
 Accept: application/xml
 
+### Validation
+POST http://localhost:8080/api/employees/
+Content-Type: application/json
+Accept: application/json
+
+{
+  "name":" "
+}
 ###
