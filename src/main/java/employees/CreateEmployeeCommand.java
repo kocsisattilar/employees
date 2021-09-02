@@ -13,7 +13,8 @@ import javax.validation.constraints.NotBlank;
 public class CreateEmployeeCommand {
 
     @Schema(description = "name of employee", example = "John Doe")
-    @NotBlank(message = "Name can not be null or blank")
+    //@NotBlank(message = "Name can not be null or blank")
+    @Name(maxLength = 10)
     private String name;
 
 }

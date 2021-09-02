@@ -77,21 +77,21 @@ public class EmployeeController {
         employeeService.deleteEmployee(id);
     }
 
-    @ExceptionHandler(MethodArgumentNotValidException.class)
-    public ResponseEntity<Problem> handleNotFound(MethodArgumentNotValidException manve){
-        List<Violation> violations = manve.getBindingResult().getFieldErrors().stream()
-                .map(fe -> new Violation(fe.getField(),fe.getDefaultMessage()))
-                .collect(Collectors.toList());
-
-        Problem problem = Problem.builder()
-                .withType(URI.create("emplyoees/not-vilad"))
-                .withTitle("Validation error")
-                .withStatus(Status.BAD_REQUEST)
-                .withDetail(manve.getMessage())
-                .with("violations",violations)
-                .build();
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST)
-                .contentType(MediaType.APPLICATION_PROBLEM_JSON)
-                .body(problem);
-    }
+//    @ExceptionHandler(MethodArgumentNotValidException.class)
+//    public ResponseEntity<Problem> handleNotFound(MethodArgumentNotValidException manve){
+//        List<Violation> violations = manve.getBindingResult().getFieldErrors().stream()
+//                .map(fe -> new Violation(fe.getField(),fe.getDefaultMessage()))
+//                .collect(Collectors.toList());
+//
+//        Problem problem = Problem.builder()
+//                .withType(URI.create("emplyoees/not-vilad"))
+//                .withTitle("Validation error")
+//                .withStatus(Status.BAD_REQUEST)
+//                .withDetail(manve.getMessage())
+//                .with("violations",violations)
+//                .build();
+//        return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+//                .contentType(MediaType.APPLICATION_PROBLEM_JSON)
+//                .body(problem);
+//    }
 }
