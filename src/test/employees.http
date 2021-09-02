@@ -48,3 +48,7 @@ Accept: application/json
   "name":"Ya"
 }
 ###
+GET http://localhost:8080/
+Accept: application/xml
+
+### Validation
