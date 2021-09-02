@@ -30,10 +30,10 @@ public class EmployeeService {
         return modelMapper.map(filtered,targetListType);
     }
 
-    public EmployeeDto findEmployeeById(long id) throws IllegalAccessException {
+    public EmployeeDto findEmployeeById(long id)  {
         return modelMapper.map(employeeList.stream()
                 .filter(e -> e.getId().equals(id)).findAny()
-                .orElseThrow(() ->new IllegalAccessException("Employee not found: " + id)),
+                .orElseThrow(() ->new EmployeeNotFoundException(+ id)),
                 EmployeeDto.class);
     }
 
@@ -43,18 +43,18 @@ public class EmployeeService {
         return modelMapper.map(employee,EmployeeDto.class);
     }
 
-    public EmployeeDto updateEmployee(long id,UpdateEmployeeCommand updateEmployeeCommand) throws IllegalAccessException {
+    public EmployeeDto updateEmployee(long id,UpdateEmployeeCommand updateEmployeeCommand) {
         Employee employee = employeeList.stream()
                 .filter(e-> e.getId()==id)
-                .findFirst().orElseThrow(() ->new IllegalAccessException("Employee not found: " + id));
+                .findFirst().orElseThrow(() ->new EmployeeNotFoundException( id));
         employee.setName(updateEmployeeCommand.getName());
         return modelMapper.map(employee,EmployeeDto.class);
     }
 
-    public void deleteEmployee(long id) throws IllegalAccessException {
+    public void deleteEmployee(long id) {
         Employee employee = employeeList.stream()
                 .filter(e-> e.getId()==id)
-                .findFirst().orElseThrow(() ->new IllegalAccessException("Employee not found: " + id));
+                .findFirst().orElseThrow(() ->new EmployeeNotFoundException( id));
         employeeList.remove(employee);
     }
 }

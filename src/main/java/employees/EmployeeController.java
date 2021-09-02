@@ -26,22 +26,24 @@ public class EmployeeController {
         return employeeService.getEmployeeList(prefix);
     }
     @GetMapping("/{id}")
-    public EmployeeDto findEmployeeById(@PathVariable("id") long id) throws IllegalAccessException {
+    public EmployeeDto findEmployeeById(@PathVariable("id") long id)  {
         return (employeeService.findEmployeeById(id));
     }
-    @ExceptionHandler(IllegalAccessException.class)
-    @ResponseStatus(HttpStatus.NOT_FOUND)
-    public ResponseEntity<Problem> handleNotFound(IllegalAccessException iea){
-        Problem problem = Problem.builder()
-                .withType(URI.create("emplyoees/not-found"))
-                .withTitle("Not found")
-                .withStatus(Status.NOT_FOUND)
-                .withDetail(iea.getMessage())
-                .build();
-        return ResponseEntity.status(HttpStatus.NOT_FOUND)
-                .contentType(MediaType.APPLICATION_PROBLEM_JSON)
-                .body(problem);
-    }
+
+//    @ExceptionHandler(IllegalAccessException.class)
+//    @ResponseStatus(HttpStatus.NOT_FOUND)
+//    public ResponseEntity<Problem> handleNotFound(IllegalAccessException iea){
+//        Problem problem = Problem.builder()
+//                .withType(URI.create("emplyoees/not-found"))
+//                .withTitle("Not found")
+//                .withStatus(Status.NOT_FOUND)
+//                .withDetail(iea.getMessage())
+//                .build();
+//        return ResponseEntity.status(HttpStatus.NOT_FOUND)
+//                .contentType(MediaType.APPLICATION_PROBLEM_JSON)
+//                .body(problem);
+//    }
+
 //    @GetMapping("/{id}")
 //    public ResponseEntity findEmployeeById(@PathVariable("id") long id) {
 //        try {
@@ -62,7 +64,7 @@ public class EmployeeController {
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteEmployee(@PathVariable long id) throws IllegalAccessException {
+    public void deleteEmployee(@PathVariable long id) {
         employeeService.deleteEmployee(id);
     }
 }

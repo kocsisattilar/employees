@@ -47,15 +47,11 @@
 
 		<dependency>
 			<groupId>org.zalando</groupId>
-			<artifactId>problem</artifactId>
-			<version>0.26.0</version>
+			<artifactId>problem-spring-web-starter</artifactId>
+			<version>0.26.2</version>
 		</dependency>
 
-		<dependency>
-			<groupId>org.zalando</groupId>
-			<artifactId>jackson-datatype-problem</artifactId>
-			<version>0.26.0</version>
-		</dependency>
+
 	</dependencies>
 
 	<build>
