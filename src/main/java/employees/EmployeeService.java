@@ -57,4 +57,9 @@ public class EmployeeService {
                 .findFirst().orElseThrow(() ->new EmployeeNotFoundException( id));
         employeeList.remove(employee);
     }
+
+    public void DeletaAllEmployees() {
+        isGenerator = new AtomicLong();
+        employeeList.clear();
+    }
 }
