@@ -1,5 +1,8 @@
 package employees;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -13,6 +16,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/employees")
+@Tag(name="Operations on employees")
 public class EmployeeController {
 
     private EmployeeService employeeService;
@@ -54,6 +58,8 @@ public class EmployeeController {
 //    }
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
+    @Operation(summary = "creates an employee")
+    @ApiResponse(responseCode = "201", description = "employee was created")
     public EmployeeDto createEmployee(@RequestBody CreateEmployeeCommand createEmployeeCommand){
         return employeeService.createEmployee(createEmployeeCommand);
     }
