@@ -32,7 +32,7 @@ public class EmployeesControllerRestAssuredIT {
                 given()
                         .contentType(ContentType.JSON)
                         .accept(ContentType.JSON);
-        employeeService.DeletaAllEmployees();
+        employeeService.DeleteAllEmployees();
     }
     @Test
     void testListEmployees(){

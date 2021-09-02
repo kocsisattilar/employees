@@ -25,7 +25,7 @@ public class EmployeesControllerRestTemplateIT {
     @Test
     @RepeatedTest(2)
     void testListEmplyoees(){
-        employeeService.DeletaAllEmployees();
+        employeeService.DeleteAllEmployees();
         EmployeeDto employeeDto = template.postForObject("/api/employees", new CreateEmployeeCommand("John Doe"), EmployeeDto.class);
         assertEquals("John Doe",employeeDto.getName());
         template.postForObject("/api/employees", new CreateEmployeeCommand("Jane Doe"), EmployeeDto.class);
