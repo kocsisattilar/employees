@@ -30,7 +30,7 @@ public class EmployeeController {
 
     @GetMapping(produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
     public List<EmployeeDto> employeeList(@RequestParam Optional<String> prefix){
-        return employeeService.getEmployeeList(prefix);
+        return employeeService.listEmployees(prefix);
     }
     @GetMapping(value="/{id}", produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
     public EmployeeDto findEmployeeById(@PathVariable("id") long id)  {

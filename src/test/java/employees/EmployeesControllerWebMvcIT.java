@@ -28,7 +28,7 @@ public class EmployeesControllerWebMvcIT {
 
     @Test
     void testListEmplyoees() throws Exception{
-        when(employeeService.getEmployeeList(any()))
+        when(employeeService.listEmployees(any()))
                 .thenReturn(List.of(
                         new EmployeeDto(1l, "John Doe"),
                         new EmployeeDto(2l, "Jack Doe")
